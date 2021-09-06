@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-cli
+spec:  # specification of the pod’s contents
+  selector:
+    matchLabels:
+      app: redis-cli
+  template:
+    metadata:
+      labels:
+        app: redis-cli
+    spec:
+      containers:
+      - name: redis
+        image: redis:6.2-alpine
+        ports:
+        - containerPort: 6379
+          name: client
+        command: ["/bin/sh"]
+        args:  ["-c", "while true; do echo hello; sleep 10000;done"]
+      restartPolicy: Always

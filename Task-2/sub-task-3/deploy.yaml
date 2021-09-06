@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upg-loadme-app-deployment
+  namespace: demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: upg-loadme-app
+  template:
+    metadata:
+      labels:
+        app: upg-loadme-app
+    spec:
+      containers:
+      - name: aruna004
+        image: 511572627495.dkr.ecr.us-east-1.amazonaws.com/aruna004:latest
+        ports:
+        - containerPort: 3000

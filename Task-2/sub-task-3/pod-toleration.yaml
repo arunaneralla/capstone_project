@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: upg-loadme-app
+  labels:
+    env: test
+spec:
+  containers:
+  - name: aruna004
+    image: 511572627495.dkr.ecr.us-east-1.amazonaws.com/aruna004:latest
+    imagePullPolicy: IfNotPresent
+  tolerations:
+  - key: "feaster"
+    value: "true"
+    operator: "Equal"
+    effect: "NoSchedule"
+

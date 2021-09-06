@@ -1,0 +1,24 @@
+# An example of Nodes Config object:
+--- 
+apiVersion: eksctl.io/v1alpha5
+kind:   ClusterConfig
+
+metadata:
+    name:   aruna004
+    region: us-east-1
+
+nodeGroups:
+    - name: ng3-public
+      instanceType:   t2.medium
+      instanceName:   custom-node-name
+      minSize: 0
+      maxSize: 5
+      desiredCapacity:    1
+      availabilityZones:  ["us-east-1a"]
+      tags:
+        k8s.io/cluster-autoscaler/node-template/label/my-cool-label: pizza
+        k8s.io/cluster-autoscaler/node-template/taint/feaster: "true:NoSchedule"
+      labels:
+        my-cool-label: pizza
+      taints:
+        feaster: "true:NoSchedule"
